@@ -1,0 +1,6 @@
+[submodule "Log/submodules/OOOCode"]
+	path = Log/submodules/OOOCode
+	url = https://github.com/pghalliday/OOOCode.git
+[submodule "Log/submodules/UnitTest"]
+	path = Log/submodules/UnitTest
+	url = https://github.com/pghalliday/OOOCode-UnitTest.git
