@@ -5,11 +5,40 @@ Logging interface and some default implementations for OOOCode
 
 ## Features
 
-- Watch this space
+- Implementation for printing to the debug output
+- Implementation for printing to a buffer (particularly for use in tests)
 
 ## API
 
+OOODebugLog class
+
 ```C
+#include "OOODebugLog.h"
+
+OOODebugLog * pLog = OOOConstruct(OOODebugLog);
+OOOILog * iLog = OOOCast(OOOILog, pLog);
+
+/* printf style printing to the debug output */
+OOOICall(iLog, print, "Hello, %s\n", "World");
+
+OOODestroy(pLog);
+```
+
+OOOBufferedLog class
+
+```C
+#include "OOOBufferedLog.h"
+
+OOOBufferedLog * pLog = OOOConstruct(OOOBufferedLog);
+OOOILog * iLog = OOOCast(OOOILog, pLog);
+
+/* printf style printing */
+OOOICall(iLog, print, "Hello, %s\n", "World");
+
+/* call the check method to verify the string that has been logged since the last time check was called */
+bool bOk = OOOCall(pLog, check, "Hello, World\n");
+
+OOODestroy(pLog);
 ```
 
 ## Roadmap
