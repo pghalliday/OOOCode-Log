@@ -1,13 +1,11 @@
 #include "OOOBufferedLog.h"
 #include "OOOCode.h"
+#include "OOO_vprintf.h"
 #include "stdarg.h"
-
-#define OOOBufferedLog_TEMP_MAX_SIZE	4095
 
 #define OOOClass OOOBufferedLog
 
 OOOPrivateData
-	char szTemp[OOOBufferedLog_TEMP_MAX_SIZE + 1];
 	char * szBuffer;
 OOOPrivateDataEnd
 
@@ -39,19 +37,13 @@ OOOMethodEnd
 OOOMethod(void, print, char * szMessage, ...)
 {
 	va_list aArgs;
-	int nMessageLength = 0;
 	assert(szMessage);
 
 	va_start(aArgs, szMessage);
-	nMessageLength = O_vsprintf(OOOF(szTemp), szMessage, aArgs);
+	OOO_vprintf(szMessage, aArgs);
 	va_end(aArgs);
 
-	/* There is a fixed size buffer for formatting the
-	 * message - must ensure we haven't overrun it (no
-	 * nicer way of doing this as far as i know) */
-	assert(nMessageLength < OOOBufferedLog_TEMP_MAX_SIZE);
-
-	OOOC(append, OOOF(szTemp));
+	OOOC(append, OOO_vprintf_szBuffer);
 }
 OOOMethodEnd
 
@@ -63,18 +55,12 @@ OOOMethod(bool, check, char * szCompare, ...)
 		if (szCompare)
 		{
 			va_list aArgs;
-			int nLength = 0;
 
 			va_start(aArgs, szCompare);
-			nLength = O_vsprintf(OOOF(szTemp), szCompare, aArgs);
+			OOO_vprintf(szCompare, aArgs);
 			va_end(aArgs);
 
-			/* There is a fixed size buffer for formatting the
-			 * message - must ensure we haven't overrun it (no
-			 * nicer way of doing this as far as i know) */
-			assert(nLength < OOOBufferedLog_TEMP_MAX_SIZE);
-
-			bCorrect = (O_strcmp(OOOF(szTemp), OOOF(szBuffer)) == 0);
+			bCorrect = (O_strcmp(OOO_vprintf_szBuffer, OOOF(szBuffer)) == 0);
 		}
 		else
 		{
