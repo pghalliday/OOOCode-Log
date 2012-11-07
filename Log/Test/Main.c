@@ -1,7 +1,7 @@
 #include "opentv.h"
 #include "assert.h"
 #include "OOODebugLog.h"
-#include "OOODebugReporter.h"
+#include "OOOLogReporter.h"
 #include "OOOUnitTestsRun.h"
 
 
@@ -9,7 +9,7 @@ void main(void)
 {
 	/* run the tests first */
 	OOODebugLog * pDebugLog = OOOConstruct(OOODebugLog);
-	OOODebugReporter * pReporter = OOOConstruct(OOODebugReporter, OOOCast(OOOILog, pDebugLog));
+	OOOLogReporter * pReporter = OOOConstruct(OOOLogReporter, OOOCast(OOOILog, pDebugLog));
 	OOOUnitTestsRun(OOOCast(OOOIReporter, pReporter));
 	OOODestroy(pReporter);
 	OOODestroy(pDebugLog);
