@@ -1,9 +1,9 @@
-#include "OOOBufferedLog.h"
+#include "OOOTestLog.h"
 #include "OOOCode.h"
 #include "OOO_vprintf.h"
 #include "stdarg.h"
 
-#define OOOClass OOOBufferedLog
+#define OOOClass OOOTestLog
 
 OOOPrivateData
 	char * szBuffer;

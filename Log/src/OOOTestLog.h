@@ -1,10 +1,10 @@
-#ifndef OOOBufferedLog_H
-#define OOOBufferedLog_H
+#ifndef OOOTestLog_H
+#define OOOTestLog_H
 
 #include "OOOCode.h"
 #include "OOOILog.h"
 
-#define OOOClass OOOBufferedLog
+#define OOOClass OOOTestLog
 OOODeclare()
 	OOOImplements
 		OOOImplement(OOOILog)

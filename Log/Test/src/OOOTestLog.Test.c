@@ -1,10 +1,10 @@
 #include "OOOUnitTestDefines.h"
 
-#include "OOOBufferedLog.h"
+#include "OOOTestLog.h"
 
-OOOTest(OOOBufferedLog)
+OOOTest(OOOTestLog)
 {
-	OOOBufferedLog * pOutput = OOOConstruct(OOOBufferedLog);
+	OOOTestLog * pOutput = OOOConstruct(OOOTestLog);
 	OOOILog * iOutput = OOOCast(OOOILog, pOutput);
 
 	/* 1 print */

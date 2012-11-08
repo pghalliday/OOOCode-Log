@@ -1,1 +1,1 @@
-#include "OOOBufferedLog.Test.h"
+#include "OOOTestLog.Test.h"
