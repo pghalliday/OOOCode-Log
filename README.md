@@ -24,12 +24,12 @@ OOOICall(iLog, print, "Hello, %s\n", "World");
 OOODestroy(pLog);
 ```
 
-OOOBufferedLog class
+OOOTestLog class
 
 ```C
-#include "OOOBufferedLog.h"
+#include "OOOTestLog.h"
 
-OOOBufferedLog * pLog = OOOConstruct(OOOBufferedLog);
+OOOTestLog * pLog = OOOConstruct(OOOTestLog);
 OOOILog * iLog = OOOCast(OOOILog, pLog);
 
 /* printf style printing */
